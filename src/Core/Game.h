@@ -17,8 +17,9 @@ class Game{
 
 public:
 	Game(int width, int height);
-	void move();
-	void display()const;
+	void display();
+	void update();
+	void run();
 };
 
 #endif //SNAKE_GAME_H

@@ -8,6 +8,12 @@ enum cellType {
 	FOOD,
 };
 
+enum gameState {
+	RUNNING,
+	WIN,
+	LOSE
+};
+
 class Cell {
 	int x;
 	int y;
@@ -26,14 +32,15 @@ public:
 
 class Board {
 	Cell **board;
-	int width;
-	int height;
 
 public:
+	int width;
+	int height;
 	Board(int width = 10, int height = 10);
 
+	cellType getType(int i, int j);
+	void setType(int, int, cellType);
 	void debug_display() const;
-	void update();
 	void placeFood();
 };
 

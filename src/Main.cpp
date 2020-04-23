@@ -1,5 +1,5 @@
 //#include "Platform/Platform.hpp"
-#include "Core/gameBoard.h"
+#include "Core/Game.h"
 
 int main()
 {
@@ -23,6 +23,7 @@ int main()
 	// 	window.clear();
 	// 	window.display();
 	// }
-
+	Game game = Game(10, 10);
+	game.run();
 	return 0;
 }

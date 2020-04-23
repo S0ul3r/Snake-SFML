@@ -6,11 +6,17 @@
 
 class Snake {
 	std::list<Cell> snakeBody;
-	Cell head;
+	std::list<Cell>::iterator head;
+	std::list<Cell>::iterator tail;
+	gameState state;
 
 public:
 	Snake(int x=2, int y=2, int length = 3);
-	void grow(Cell);
+	void move(Cell);
+	std::list<Cell>::iterator getHead()const;
+	std::list<Cell>::iterator getTail()const;
+	std::list<Cell>::iterator getEnd();
+	void printSnake();
 };
 
 #endif //SNAKE_SNAKE_H
