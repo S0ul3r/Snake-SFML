@@ -16,10 +16,17 @@ class Game{
 	direction dir;
 
 public:
+	int width;
+	int height;
 	Game(int width, int height);
 	void display();
 	void update();
 	void run();
+	Cell nextCell();
+	cellType getType(int , int);
+	direction getDirection();
+	void setDirection(direction);
+	void placeFood();
 };
 
 #endif //SNAKE_GAME_H

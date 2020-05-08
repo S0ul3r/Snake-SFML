@@ -42,6 +42,7 @@ public:
 	void setType(int, int, cellType);
 	void debug_display() const;
 	void placeFood();
+	Cell getCell(int x, int y);
 };
 
 #endif //SNAKE_CELL_H

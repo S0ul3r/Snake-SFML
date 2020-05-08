@@ -1,3 +1,6 @@
-Snake game using SFML GUI. All source files are kept in src folder.
+# SFML Minesweeper
 
-Project is created using premade SFML build environment: https://github.com/andrew-r-king/sfml-vscode-boilerplate
+Minesweeper in C++.
+Using SFML lib for GUI, it is developed for vscode.
+
+All source files are in src folder.

@@ -63,10 +63,15 @@ void Board::placeFood(){
 	board[v[r].first][v[r].second].setType(cellType::FOOD);
 }
 
+//Setters and getters
 void Board::setType(int i, int j, cellType t){
 	board[i][j].setType(t);
 }
 
 cellType Board::getType(int i, int j){
 	return board[i][j].getCellType();
+}
+
+Cell Board::getCell(int x, int y){
+	return board[x][y];
 }
