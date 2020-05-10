@@ -91,9 +91,30 @@ int main()
 		gameState state = game.snake.getGamestate();
 
 		//Check if user lost the game
-		if (state != PAUSE || state != LOSE) {
+		if (state != 1 || state != 2) {
+			std::cout<<state;
 			game.update();
+		} else {
+			sf::Font font;
+			sf::Text text;
+			text.setFont(font);
+			text.setString("You Lost, press Space to try agian");
+			text.setCharacterSize(24);
+			text.setFillColor(sf::Color::Red);
+			text.setStyle(sf::Text::Bold);
+			text.setPosition(150, 400);
+
+			window.draw(text);
+			window.display();
+
+			//Restart the game
+			if(event.type == sf::Event::KeyPressed ){
+				if(event.key.code == sf::Keyboard::Space){
+					game.snake.setGamestate(RUNNING);
+				}
+			}
 		}
+
 		game.display();
 
 		//Clear and draw board again
