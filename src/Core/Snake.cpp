@@ -29,7 +29,7 @@ void Snake::move(Cell c){
 			snakeBody.push_back(c);
 			snakeBody.pop_front();
 		}else{
-			state = gameState::LOSE;
+			setGamestate(LOSE);
 		}
 	}else if(c.getCellType() == cellType::WALL){
 		state = gameState::LOSE;

@@ -50,10 +50,10 @@ int main()
 					game.snake.setGamestate(PAUSE);
 				}
 				if(event.key.code == sf::Keyboard::PageUp){
-					sleepTime = sleepTime + sf::seconds(0.01f);
+					sleepTime = sleepTime - sf::seconds(0.01f);
 				}
 				if(event.key.code == sf::Keyboard::PageDown){
-					sleepTime = sleepTime - sf::seconds(0.01f);
+					sleepTime = sleepTime + sf::seconds(0.01f);
 				}
 				if(event.key.code == sf::Keyboard::Up){
 					direction x = game.getDirection();
@@ -88,11 +88,12 @@ int main()
 
 		//Flag for fixing a bug where you can change direction two times
 		dirFlag = false;
-		// enum state = game.snake.getGamestate();
+		gameState state = game.snake.getGamestate();
 
-		// if (state != 1 || state != 2) {
+		//Check if user lost the game
+		if (state != PAUSE || state != LOSE) {
 			game.update();
-		// }
+		}
 		game.display();
 
 		//Clear and draw board again
