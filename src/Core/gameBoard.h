@@ -10,7 +10,7 @@ enum cellType {
 
 enum gameState {
 	RUNNING,
-	WIN,
+	PAUSE,
 	LOSE
 };
 

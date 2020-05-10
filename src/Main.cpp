@@ -2,11 +2,11 @@
 #include "Core/Game.h"
 
 //Locals:
-int width 					= 10;
-int height 					= 10;
+int width 					= 15;
+int height 					= 15;
 int cellSize 				= 32;
 bool dirFlag 				= false;
-sf::Time sleepTime 			= sf::seconds(0.5f);
+sf::Time sleepTime 			= sf::seconds(0.05f);
 sf::Color cellColor 		= sf::Color::Black;
 sf::Color snakeColor 		= sf::Color::Green;
 sf::Color borderColor 		= sf::Color::Magenta;
@@ -46,6 +46,15 @@ int main()
 
 			//Setting directions depending on snake movement and key pressed
 			if(event.type == sf::Event::KeyPressed  &&  dirFlag == false){
+				if(event.key.code == sf::Keyboard::Escape){
+					game.snake.setGamestate(PAUSE);
+				}
+				if(event.key.code == sf::Keyboard::PageUp){
+					sleepTime = sleepTime + sf::seconds(0.01f);
+				}
+				if(event.key.code == sf::Keyboard::PageDown){
+					sleepTime = sleepTime - sf::seconds(0.01f);
+				}
 				if(event.key.code == sf::Keyboard::Up){
 					direction x = game.getDirection();
 					if(x == direction::DIR_LEFT || x == direction::DIR_RIGHT){
@@ -79,7 +88,11 @@ int main()
 
 		//Flag for fixing a bug where you can change direction two times
 		dirFlag = false;
-		game.update();
+		// enum state = game.snake.getGamestate();
+
+		// if (state != 1 || state != 2) {
+			game.update();
+		// }
 		game.display();
 
 		//Clear and draw board again

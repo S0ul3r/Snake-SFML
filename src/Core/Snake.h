@@ -13,10 +13,12 @@ class Snake {
 public:
 	Snake(int x=2, int y=2, int length = 3);
 	void move(Cell);
+	void printSnake();
 	std::list<Cell>::iterator getHead()const;
 	std::list<Cell>::iterator getTail()const;
 	std::list<Cell>::iterator getEnd();
-	void printSnake();
+	gameState getGamestate();
+	void setGamestate(gameState);
 };
 
 #endif //SNAKE_SNAKE_H

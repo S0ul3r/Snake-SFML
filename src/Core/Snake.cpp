@@ -58,3 +58,11 @@ std::list<Cell>::iterator Snake::getTail()const{
 std::list<Cell>::iterator Snake::getEnd(){
 	return snakeBody.end();
 }
+
+gameState Snake::getGamestate(){
+	return state;
+}
+
+void Snake::setGamestate(gameState g){
+	state = g;
+}

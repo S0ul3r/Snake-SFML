@@ -47,14 +47,31 @@ Cell Game::nextCell() {
 	int x = head->getCellX();
 	int y = head->getCellY();
 
+
 	if (dir == 1) {
-		y += 1;
+		if (y == width-1){
+			y = 0;
+		} else{
+			y += 1;
+		}
 	} else if (dir == 2) {
-		x -= 1;
+		if (x == 0){
+			x = height-1;
+		} else{
+			x -= 1;
+		}
 	} else if (dir == -1) {
-		y -= 1;
+		if (y == 0){
+			y = width-1;
+		} else{
+			y -= 1;
+		}
 	} else if (dir == -2) {
-		x += 1;
+		if (x == height-1){
+			x = 0;
+		} else{
+			x += 1;
+		}
 	}
 	return board.getCell(x, y);
 }
