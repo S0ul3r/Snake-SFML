@@ -8,7 +8,6 @@ class Snake {
 	std::list<Cell> snakeBody;
 	std::list<Cell>::iterator head;
 	std::list<Cell>::iterator tail;
-	gameState state;
 
 public:
 	Snake(int x=2, int y=2, int length = 3);
@@ -17,8 +16,7 @@ public:
 	std::list<Cell>::iterator getHead()const;
 	std::list<Cell>::iterator getTail()const;
 	std::list<Cell>::iterator getEnd();
-	gameState getGamestate();
-	void setGamestate(gameState);
+	bool stateOfGame;
 };
 
 #endif //SNAKE_SNAKE_H

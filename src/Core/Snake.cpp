@@ -12,7 +12,8 @@ Snake::Snake(int x, int y, int length){
 	this->head = head;
 	std::list<Cell>::iterator tail = snakeBody.begin();
 	this->tail = tail;
-	state = gameState::RUNNING;
+	//game is running when stateOfGame is 1
+	stateOfGame = 1;
 }
 
 //Different cell behaviors
@@ -29,10 +30,11 @@ void Snake::move(Cell c){
 			snakeBody.push_back(c);
 			snakeBody.pop_front();
 		}else{
-			setGamestate(LOSE);
+			stateOfGame = 0;
 		}
 	}else if(c.getCellType() == cellType::WALL){
-		state = gameState::LOSE;
+		//game is lost when stateOfGame is 0
+		stateOfGame = 0;
 	}
 	this->head = snakeBody.end();
 	this->head--;
@@ -57,12 +59,4 @@ std::list<Cell>::iterator Snake::getTail()const{
 
 std::list<Cell>::iterator Snake::getEnd(){
 	return snakeBody.end();
-}
-
-gameState Snake::getGamestate(){
-	return state;
-}
-
-void Snake::setGamestate(gameState g){
-	state = g;
 }

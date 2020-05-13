@@ -13,9 +13,11 @@ enum direction{
 class Game{
 	Board board;
 	direction dir;
+	gameState state;
+	Snake snake;
+	int score;
 
 public:
-	Snake snake;
 	int width;
 	int height;
 	Game(int width, int height);
@@ -27,6 +29,9 @@ public:
 	cellType getType(int , int);
 	direction getDirection();
 	void setDirection(direction);
+	gameState getGamestate();
+	void setGamestate(gameState);
+	int getScore();
 };
 
 #endif //SNAKE_GAME_H

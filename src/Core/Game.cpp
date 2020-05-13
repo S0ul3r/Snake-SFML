@@ -16,16 +16,26 @@ Game::Game(int width, int height){
 	this->width = width;
 	this->height = height;
 	placeFood();
+	state = gameState::RUNNING;
+	score = 0;
 }
 
 //Updating board on every move (will determine difficulty)
 void Game::update(){
 	Cell c = nextCell();
+	if(snake.stateOfGame == 0){
+		state = LOSE;
+		return;
+	}
+	if(state == PAUSE){
+		return;
+	}
 	snake.move(c);
 
 	if(c.getCellType() == cellType::FOOD){
 		placeFood();
 		board.setType(c.getCellX(), c.getCellY(), cellType::EMPTY);
+		score++;
 	}
 	//Clearing board from snake
 	for(int i=0; i<board.width; i++ ){
@@ -34,7 +44,6 @@ void Game::update(){
 				board.setType(i, j, cellType::EMPTY);
 		}
 	}
-
 	//Creating new snake body
 	for(auto it = snake.getTail();it != snake.getEnd(); ++it){
 		board.setType(it->getCellX(), it->getCellY(), cellType::SNAKE);
@@ -118,4 +127,16 @@ direction Game::getDirection(){
 
 void Game::setDirection(direction d){
 	dir = d;
+}
+
+gameState Game::getGamestate(){
+	return state;
+}
+
+void Game::setGamestate(gameState g){
+	state = g;
+}
+
+int Game::getScore() {
+	return score;
 }
